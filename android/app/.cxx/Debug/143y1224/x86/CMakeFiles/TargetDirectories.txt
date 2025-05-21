@@ -1,0 +1,2 @@
+D:/FlutterDev/projects/MedTechService/med_tech_app/android/app/.cxx/Debug/143y1224/x86/CMakeFiles/edit_cache.dir
+D:/FlutterDev/projects/MedTechService/med_tech_app/android/app/.cxx/Debug/143y1224/x86/CMakeFiles/rebuild_cache.dir

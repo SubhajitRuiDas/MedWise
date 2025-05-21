@@ -1,0 +1,1 @@
+D:\FlutterDev\projects\MedTechService\med_tech_app\build\app\intermediates\cxx\Debug\143y1224\obj\arm64-v8a
