@@ -15,3 +15,11 @@ Future<String> getUserName() async{
     return "";
   }
 }
+String getUserImage() {
+  final user = FirebaseAuth.instance.currentUser;
+  return user?.photoURL ?? "";
+}
+String getUserEmail() {
+  final user = FirebaseAuth.instance.currentUser;
+  return user?.email ?? "";
+}

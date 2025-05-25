@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
 import 'package:med_tech_app/utils/user_details.dart';
+import 'package:med_tech_app/widget/display_card.dart';
+import 'package:med_tech_app/widget/main_side_drawer.dart';
 
 class HomeScreen extends StatefulWidget{
   const HomeScreen({super.key});
@@ -36,6 +38,23 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: homeScreenBg,
         elevation: 2,
+      ),
+      drawer: MainSideDrawer(),
+      body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        scrollDirection: Axis.vertical,
+        children: [
+          SizedBox(
+            height: 160,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                DisplayCard(cardColor: Colors.orangeAccent, cardText: "Medical Services"),
+                DisplayCard(cardColor: Colors.green, cardText: "Health Assistant"),
+              ],
+            ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
