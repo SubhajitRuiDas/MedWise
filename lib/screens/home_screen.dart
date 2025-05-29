@@ -5,6 +5,7 @@ import 'package:med_tech_app/utils/colors_util.dart';
 import 'package:med_tech_app/utils/user_details.dart';
 import 'package:med_tech_app/widget/display_card.dart';
 import 'package:med_tech_app/widget/main_side_drawer.dart';
+import 'package:med_tech_app/widget/service_container.dart';
 
 class HomeScreen extends StatefulWidget{
   const HomeScreen({super.key});
@@ -44,6 +45,21 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.symmetric(horizontal: 10),
         scrollDirection: Axis.vertical,
         children: [
+          Text("Services", textAlign: TextAlign.start,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35, color: buttonColor),),
+          const SizedBox(height: 10,),
+          SizedBox(
+            height: 150,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                ServiceContainer(bgColor: Colors.lightBlueAccent, img: "assets/images/health-monitor.png", underlineTxt: "Health Checkup"),
+                ServiceContainer(bgColor: buttonColor, img: "assets/images/online-appointment.png", underlineTxt: "Dr. Appoinment"),
+                ServiceContainer(bgColor: Colors.redAccent.shade200, img: "assets/images/medical-app.png", underlineTxt: "Health Assistant"),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20,),
           SizedBox(
             height: 160,
             child: ListView(
@@ -62,6 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedScreen = value;
           });
         },
+        selectedItemColor: buttonColor,
         currentIndex: _selectedScreen,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
