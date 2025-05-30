@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
+import 'package:med_tech_app/utils/dr_data_list.dart';
 import 'package:med_tech_app/utils/user_details.dart';
 import 'package:med_tech_app/widget/display_card.dart';
 import 'package:med_tech_app/widget/main_side_drawer.dart';
@@ -17,6 +18,8 @@ class HomeScreen extends StatefulWidget{
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedScreen = 0;
   String username ="";
+
+  String selectedFilter = "";
   fetchUserName() async{
     String uname = await getUserName();
     setState(() {
@@ -35,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text(
           "Hello!\n$username",
-          style: TextStyle(color: buttonColor, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         backgroundColor: homeScreenBg,
         elevation: 2,
@@ -46,16 +49,21 @@ class _HomeScreenState extends State<HomeScreen> {
         scrollDirection: Axis.vertical,
         children: [
           Text("Services", textAlign: TextAlign.start,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35, color: buttonColor),),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35, color: bgColor2),),
           const SizedBox(height: 10,),
           SizedBox(
-            height: 150,
+            height: 120,
             child: ListView(
+              padding: EdgeInsets.symmetric(horizontal: 10),
               scrollDirection: Axis.horizontal,
               children: [
-                ServiceContainer(bgColor: Colors.lightBlueAccent, img: "assets/images/health-monitor.png", underlineTxt: "Health Checkup"),
-                ServiceContainer(bgColor: buttonColor, img: "assets/images/online-appointment.png", underlineTxt: "Dr. Appoinment"),
-                ServiceContainer(bgColor: Colors.redAccent.shade200, img: "assets/images/medical-app.png", underlineTxt: "Health Assistant"),
+                ServiceContainer(img: "assets/images/health-monitor.png", underlineTxt: "Health Checkup"),
+                SizedBox(width: 16,),
+                ServiceContainer(img: "assets/images/online-appointment.png", underlineTxt: "Dr. Appoinment"),
+                SizedBox(width: 16,),
+                ServiceContainer(img: "assets/images/medical-app.png", underlineTxt: "Health Assistant"),
+                SizedBox(width: 16,),
+                ServiceContainer(img: "assets/images/doctor-with-his-arms-crossed-white-background.png", underlineTxt: "AI Assistant"),
               ],
             ),
           ),
@@ -70,6 +78,71 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          Text("Categories", textAlign: TextAlign.start,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35, color: bgColor2),),
+          SizedBox(
+              height: 50,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: doctors_specialization_category.length,
+                itemBuilder: (context, index) {
+                  final filter = doctors_specialization_category[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedFilter = filter;
+                        });
+                      },
+                      child: Chip(
+                        label: Text(filter),
+                        labelStyle: const TextStyle(
+                          fontSize: 16,
+                        ),
+                        backgroundColor: selectedFilter == filter ? buttonColor2
+                        : const Color.fromARGB(255, 227, 234, 241),
+                        side: const BorderSide(
+                          color: Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            const SizedBox(height: 10,),
+            SizedBox(
+              height: 400,
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: doctors_list_data.length,
+                itemBuilder: (context, index) {
+                  final doctor = doctors_list_data[index];
+                  return Card(
+                    elevation: 3,
+                    color: Color.fromARGB(255, 232, 237, 242),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: AssetImage("assets/images/doctor-with-his-arms-crossed-white-background.png"),
+                      ),
+                      title: Text(doctor["doctorName"]),
+                      subtitle: Text("${doctor["doctorSpecialization"]}\n⭐${doctor["doctorRatings"]}"),
+                      trailing: TextButton(
+                        onPressed: (){}, 
+                        child: Text("View Details"),
+                      ),
+                    ),
+                  );
+                }),
+            ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -78,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedScreen = value;
           });
         },
-        selectedItemColor: buttonColor,
+        selectedItemColor: bgColor2,
         currentIndex: _selectedScreen,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),

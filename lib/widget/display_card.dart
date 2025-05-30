@@ -16,7 +16,7 @@ class DisplayCard extends StatelessWidget {
         gradient: LinearGradient(
           colors: [
             cardColor,
-            buttonColor
+            bgColor2
           ],
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
@@ -37,14 +37,14 @@ class DisplayCard extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 20,
                   ),
                 ),
                 Text(
                   "We provide best quality\n$cardText in our platform.",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 12,
                   ),
                 ),
               ],

@@ -34,27 +34,27 @@ class MainSideDrawer extends StatelessWidget {
                   : AssetImage("assets/images/blue-circle-with-white-user.png") as ImageProvider,
                 ),
                 const SizedBox(width: 10,),
-                Text(_userEmail, style: Theme.of(context).textTheme.titleMedium!.copyWith(color: buttonColor, fontSize: 18),),
+                Text(_userEmail, style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.black, fontSize: 18),),
               ],
             ),
           ),
           ListTile(
-            leading: Icon(Icons.supervised_user_circle_sharp, color: buttonColor,),
-            title: Text("Profile", style: TextStyle(fontWeight: FontWeight.bold, color: buttonColor),),
+            leading: Icon(Icons.supervised_user_circle_sharp, color: bgColor2,),
+            title: Text("Profile", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
             onTap: () {
               
             },
           ),
           ListTile(
-            leading: Icon(Icons.edit_document, color: buttonColor,),
-            title: Text("Prescriptions", style: TextStyle(fontWeight: FontWeight.bold, color: buttonColor),),
+            leading: Icon(Icons.edit_document, color: bgColor2,),
+            title: Text("Prescriptions", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
             onTap: () {
               
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings, color: buttonColor,),
-            title: Text("Settings", style: TextStyle(fontWeight: FontWeight.bold, color: buttonColor),),
+            leading: Icon(Icons.settings, color: bgColor2,),
+            title: Text("Settings", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
             onTap: () {
               
             },
@@ -62,12 +62,12 @@ class MainSideDrawer extends StatelessWidget {
           ElevatedButton(
               onPressed: (){}, 
               style: ElevatedButton.styleFrom(
-                backgroundColor: buttonColor,
+                backgroundColor: bgColor2,
                 elevation: 6,
               ),
               child: Text(
                 "Log Out",
-                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
             ),
           
