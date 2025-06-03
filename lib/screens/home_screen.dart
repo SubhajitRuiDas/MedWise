@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:med_tech_app/screens/chat_with_model_screen.dart';
+import 'package:med_tech_app/screens/scan_prescription_screen.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
 import 'package:med_tech_app/utils/dr_data_list.dart';
 import 'package:med_tech_app/utils/user_details.dart';
@@ -31,20 +33,19 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     fetchUserName();
   }
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: homeScreenBg,
-      appBar: AppBar(
-        title: Text(
-          "Hello!\n$username",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: homeScreenBg,
-        elevation: 2,
-      ),
-      drawer: MainSideDrawer(),
-      body: ListView(
+
+  Widget _selectCurrentScreenBasedOnBottomNavbar(){
+    if(_selectedScreen == 0){
+      return _homeScreenContent();
+    } else if(_selectedScreen == 1){
+      return const ChatWithModelScreen();
+    } else {
+      return const ScanPrescriptionScreen();
+    }
+  }
+
+  Widget _homeScreenContent(){
+    return ListView(
         padding: EdgeInsets.symmetric(horizontal: 10),
         scrollDirection: Axis.vertical,
         children: [
@@ -144,7 +145,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 }),
             ),
         ],
+      );
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: homeScreenBg,
+      appBar: AppBar(
+        title: Text(
+          "Hello!\n$username",
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: homeScreenBg,
+        elevation: 2,
       ),
+      drawer: MainSideDrawer(),
+      body: _selectCurrentScreenBasedOnBottomNavbar(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           setState(() {
@@ -156,6 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chat"),
+          BottomNavigationBarItem(icon: Icon(Icons.document_scanner), label: "Scan"),
         ],
         backgroundColor: homeScreenBg,
       ),
