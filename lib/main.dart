@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_tech_app/bloc/bloc/prescription_process_bloc.dart';
 import 'package:med_tech_app/cubit/user_auth_cubit.dart';
 import 'package:med_tech_app/screens/auth_screen.dart';
 import 'package:med_tech_app/screens/home_screen.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<UserAuthCubit>(create: (context) => UserAuthCubit(),)
+        BlocProvider<UserAuthCubit>(create: (context) => UserAuthCubit(),),
+        BlocProvider<PrescriptionProcessBloc>(create: (context) => PrescriptionProcessBloc(),),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
