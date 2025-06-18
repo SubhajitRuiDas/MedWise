@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:med_tech_app/screens/auth_screen.dart';
+import 'package:med_tech_app/screens/home_screen.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
 
 class SplashScreen extends StatelessWidget{
@@ -41,16 +43,36 @@ class SplashScreen extends StatelessWidget{
                     ),
                   ),
                   const SizedBox(height: 60,),
-                  ElevatedButton(
-                    onPressed: (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AuthScreen()));
-                    }, 
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                      backgroundColor: buttonColor,
-                      shadowColor: buttonColor,
-                    ),
-                    child: Text("Get Started", style: TextStyle(color: Colors.white),),
+                  StreamBuilder<User?>(
+                    stream: FirebaseAuth.instance.authStateChanges(),
+                    builder: (context, snapshot) {
+                      if(snapshot.connectionState == ConnectionState.waiting){
+                        return CircularProgressIndicator();
+                      } 
+                      if(snapshot.hasData) {
+                        return ElevatedButton(onPressed: (){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                        }, 
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                          backgroundColor: buttonColor,
+                          shadowColor: buttonColor,
+                        ),
+                        child: Text("Get Started", style: TextStyle(color: Colors.white),),
+                        );
+                      }
+                      return ElevatedButton(
+                        onPressed: (){
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AuthScreen()));
+                        }, 
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                          backgroundColor: buttonColor,
+                          shadowColor: buttonColor,
+                        ),
+                        child: Text("Get Started", style: TextStyle(color: Colors.white),), 
+                      );
+                    }
                   ),
                 ],
               ),

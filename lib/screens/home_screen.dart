@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:med_tech_app/model/dr_model.dart';
 import 'package:med_tech_app/screens/chat_with_model_screen.dart';
+import 'package:med_tech_app/screens/dr_appointment_booking_screen.dart';
 import 'package:med_tech_app/screens/scan_prescription_screen.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
 import 'package:med_tech_app/utils/dr_data_list.dart';
@@ -137,7 +139,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       title: Text(doctor["doctorName"]),
                       subtitle: Text("${doctor["doctorSpecialization"]}\n⭐${doctor["doctorRatings"]}"),
                       trailing: TextButton(
-                        onPressed: (){}, 
+                        onPressed: (){
+                          Navigator.push(
+                            context, 
+                            MaterialPageRoute(builder: (context) => DrAppointmentBookingScreen(
+                              currDr: DrModel(
+                                doctorImage: doctor["doctorImage"] as String, 
+                                doctorRatings: doctor["doctorRatings"] as double, 
+                                doctorName: doctor["doctorName"] as String, 
+                                doctorSpecialization: doctor["doctorSpecialization"] as String,
+                                doctorFees: doctor["doctorFees"] as int),
+                              ),
+                            ),
+                          );
+                        }, 
                         child: Text("View Details"),
                       ),
                     ),
