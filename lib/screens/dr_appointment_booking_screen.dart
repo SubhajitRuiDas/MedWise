@@ -29,8 +29,8 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(top: 15),
               decoration: BoxDecoration(
+                color: buttonColor2,
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15)),
                 image: DecorationImage(image: AssetImage("assets/images/doctor-with-his-arms-crossed-white-background.png"),
                 fit: BoxFit.contain),
@@ -58,6 +58,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                         SizedBox(
                           height: 50,
                           child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
                             itemCount: dateOptions.length,
                             itemBuilder: (context, index) {
                               final selectedDate = dateOptions[index];
@@ -92,7 +93,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(10.0),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.green,
