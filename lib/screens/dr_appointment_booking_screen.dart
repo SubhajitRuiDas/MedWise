@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:med_tech_app/model/dr_model.dart';
+import 'package:med_tech_app/repository/firebase/appointment_booking_service.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
+import 'package:med_tech_app/utils/show_snackbar.dart';
 
 class DrAppointmentBookingScreen extends StatefulWidget {
   final DrModel currDr;
@@ -11,7 +13,7 @@ class DrAppointmentBookingScreen extends StatefulWidget {
 }
 
 class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen> {
-  String _selectedDate = "";
+  String appointmentDate = "";
   List<String> dateOptions = List.generate(3, (index) {
     final date = DateTime.now().add(Duration(days: index));
     return "${date.day}/${date.month}/${date.year}";
@@ -31,7 +33,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
             child: Container(
               decoration: BoxDecoration(
                 color: buttonColor2,
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15)),
+                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                 image: DecorationImage(image: AssetImage("assets/images/doctor-with-his-arms-crossed-white-background.png"),
                 fit: BoxFit.contain),
               ),
@@ -67,7 +69,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                                 child: GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      _selectedDate = selectedDate;
+                                      appointmentDate = selectedDate;
                                     });
                                   },
                                   child: Chip(
@@ -75,7 +77,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                                     labelStyle: const TextStyle(
                                       fontSize: 14,
                                     ),
-                                    backgroundColor: selectedDate.compareTo(_selectedDate) == 0 ? buttonColor2
+                                    backgroundColor: selectedDate.compareTo(appointmentDate) == 0 ? buttonColor2
                                     : const Color.fromARGB(255, 227, 234, 241),
                                     side: const BorderSide(
                                       color: Color.fromRGBO(245, 247, 249, 1),
@@ -103,10 +105,21 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Total Fee: ${widget.currDr.doctorFees}", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                          Text("Total Fee: ${widget.currDr.doctorFees}", 
+                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),),
                           InkWell(
-                            onTap: () {
+                            onTap: () async{
                               // book appointment
+                              if(appointmentDate.isEmpty){
+                                showSnackbar(context, "Please select appointment date");
+                                return;
+                              }
+                              bool result = await AppointmentBookingService.bookDrAppointment(widget.currDr, appointmentDate);
+                              if(result){
+                                showSnackbar(context, "Doctor appointment is done");
+                              } else {
+                                showSnackbar(context, "Appointment for this dr is already booked, please check once...");
+                              }
                             },
                             child: Container(
                       decoration: BoxDecoration(
@@ -120,6 +133,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                             "Book Now",
                             style: TextStyle(
                               color: Colors.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Icon(

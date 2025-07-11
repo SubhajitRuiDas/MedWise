@@ -84,7 +84,7 @@ class _AuthScreenState extends State<AuthScreen> {
       backgroundColor: const Color.fromARGB(255, 193, 243, 233),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 193, 243, 233),
-        title: Text("MedSync", style: TextStyle(fontWeight: FontWeight.bold, color: buttonColor),),
+        title: Text("MedWise AI", style: TextStyle(fontWeight: FontWeight.bold, color: buttonColor),),
         elevation: 10,
         centerTitle: true,
       ),

@@ -150,3 +150,8 @@ final List<Map<String, dynamic>> doctors_list_data = [
     "doctorFees": 750,
   },
 ];
+
+List<Map<String, dynamic>> extractFilteredDrs(String filter){
+  return doctors_list_data
+  .where((doctor) => doctor["doctorSpecialization"] == filter).toList();
+}

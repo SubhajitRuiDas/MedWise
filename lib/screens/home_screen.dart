@@ -22,8 +22,9 @@ class HomeScreen extends StatefulWidget{
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedScreen = 0;
   String username ="";
+  final List<Map<String, dynamic>> _filteredDrList = [];
 
-  String selectedFilter = "";
+  String selectedFilter = "All";
   fetchUserName() async{
     String uname = await getUserName();
     setState(() {
@@ -36,6 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
     fetchUserName();
   }
 
+  void _setFilteredDrList(String filter) {
+    setState(() {
+      _filteredDrList.clear();
+      _filteredDrList.addAll(extractFilteredDrs(filter));
+    });
+  }
   Widget _selectCurrentScreenBasedOnBottomNavbar(){
     if(_selectedScreen == 0){
       return _homeScreenContent();
@@ -96,6 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         setState(() {
                           selectedFilter = filter;
+                          if(selectedFilter != "All") _setFilteredDrList(selectedFilter);
                         });
                       },
                       child: Chip(
@@ -123,9 +131,9 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 400,
               child: ListView.builder(
                 scrollDirection: Axis.vertical,
-                itemCount: doctors_list_data.length,
+                itemCount: selectedFilter == "All" ? doctors_list_data.length : _filteredDrList.length,
                 itemBuilder: (context, index) {
-                  final doctor = doctors_list_data[index];
+                  final doctor = selectedFilter == "All" ? doctors_list_data[index] : _filteredDrList[index];
                   return Card(
                     elevation: 3,
                     color: Color.fromARGB(255, 232, 237, 242),

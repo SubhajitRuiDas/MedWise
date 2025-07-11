@@ -30,7 +30,7 @@ class SplashScreen extends StatelessWidget{
                   const SizedBox(height: kToolbarHeight,),
                   Text("Welcome",style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: bgColor),),
                   // const SizedBox(height: 5,),
-                  Text("To Your Medical App MediSync", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: bgColor),),
+                  Text("To Your Medical App MediWise AI", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: bgColor),),
                   const SizedBox(height: 60,),
                   Text(
                     'Your all-in-one health companion.\n'

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:med_tech_app/repository/firebase/firebase_auth_method.dart';
+import 'package:med_tech_app/screens/booked_appointments_screen.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
+import 'package:med_tech_app/utils/show_snackbar.dart';
 import 'package:med_tech_app/utils/user_details.dart';
 
 class MainSideDrawer extends StatelessWidget {
@@ -46,10 +49,10 @@ class MainSideDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.edit_document, color: bgColor2,),
-            title: Text("Prescriptions", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
+            leading: Icon(Icons.app_registration_outlined, color: bgColor2,),
+            title: Text("Appointments", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
             onTap: () {
-              
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const BookedAppointmentsScreen()));
             },
           ),
           ListTile(
@@ -60,7 +63,38 @@ class MainSideDrawer extends StatelessWidget {
             },
           ),
           ElevatedButton(
-              onPressed: (){}, 
+              onPressed: (){
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                    title: const Text("Log out", textAlign: TextAlign.center,),
+                    elevation: 10.0,
+                    content: const Text("Do you want to log out?", textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+                    actions: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            onPressed: (){
+                              showSnackbar(context, "Log out process starts");
+                              FirebaseAuthMethod.singOut(context);
+                            }, 
+                            child: Text("Yes", style: TextStyle(fontWeight: FontWeight.bold),),
+                          ),
+                          TextButton(
+                            onPressed: (){
+                              Navigator.of(context).pop();
+                            }, 
+                            child: Text("No", style: TextStyle(fontWeight: FontWeight.bold),),
+                          ),
+                        ],
+                      ),
+                    ],
+                  );
+                  },
+                );
+              }, 
               style: ElevatedButton.styleFrom(
                 backgroundColor: bgColor2,
                 elevation: 6,
