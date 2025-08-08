@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:med_tech_app/model/dr_model.dart';
 import 'package:med_tech_app/screens/chat_with_model_screen.dart';
 import 'package:med_tech_app/screens/dr_appointment_booking_screen.dart';
+import 'package:med_tech_app/screens/health_attributes_tracking_screen.dart';
 import 'package:med_tech_app/screens/scan_prescription_screen.dart';
 import 'package:med_tech_app/utils/colors_util.dart';
 import 'package:med_tech_app/utils/dr_data_list.dart';
@@ -44,12 +45,17 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
   Widget _selectCurrentScreenBasedOnBottomNavbar(){
-    if(_selectedScreen == 0){
-      return _homeScreenContent();
-    } else if(_selectedScreen == 1){
-      return const ChatWithModelScreen();
-    } else {
-      return const ScanPrescriptionScreen();
+    switch(_selectedScreen){
+      case 0:
+        return _homeScreenContent();
+      case 1:
+        return const ChatWithModelScreen();
+      case 2:
+        return const HealthAttributesTrackingScreen();
+      case 3:
+        return const ScanPrescriptionScreen(); 
+      default:
+        return const Center(child: Text("Page not found")); // for safety fallback raklam
     }
   }
 
@@ -185,16 +191,18 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: MainSideDrawer(),
       body: _selectCurrentScreenBasedOnBottomNavbar(),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedScreen,
         onTap: (value) {
           setState(() {
             _selectedScreen = value;
           });
         },
         selectedItemColor: bgColor2,
-        currentIndex: _selectedScreen,
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Chat"),
+          BottomNavigationBarItem(icon: Icon(Icons.health_and_safety), label: "Track"),
           BottomNavigationBarItem(icon: Icon(Icons.document_scanner), label: "Scan"),
         ],
         backgroundColor: homeScreenBg,

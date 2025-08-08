@@ -30,6 +30,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
+            flex: 2,
             child: Container(
               decoration: BoxDecoration(
                 color: buttonColor2,
@@ -40,6 +41,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
             ),
           ),
           Expanded(
+            flex: 2,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
               child: Column(
@@ -51,14 +53,14 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                         Text(widget.currDr.doctorName, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
                         Text("Rating: ⭐${widget.currDr.doctorRatings}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
                         Text("Specialization: ${widget.currDr.doctorSpecialization}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
-                        const SizedBox(height: 12,),
+                        const SizedBox(height: 5,),
                         Text("${widget.currDr.doctorName} is a renowned specialist in ${widget.currDr.doctorSpecialization} with a strong record of successful treatments. Book your appointment today to get expert guidance and care.",
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16, color: Colors.grey[800]),
+                        style: TextStyle(fontSize: 15, color: Colors.grey[800]),
                         ),
                         Text("Date: ", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),),
                         SizedBox(
-                          height: 50,
+                          height: 40,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: dateOptions.length,
@@ -102,6 +104,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
                         borderRadius: BorderRadius.circular(20),
                       ),
                       padding: const EdgeInsets.all(15),
+                      margin: EdgeInsets.only(bottom: 5.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
