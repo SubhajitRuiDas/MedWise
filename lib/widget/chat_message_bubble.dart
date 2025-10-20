@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ChatMessageBubble extends StatelessWidget {
-  final String? username;
   final String message;
-
   final bool isMe;
+
   const ChatMessageBubble({
     super.key,
-    required this.username,
     required this.message,
     required this.isMe,
   });
@@ -21,7 +19,7 @@ class ChatMessageBubble extends StatelessWidget {
         Container(
           // Add some margin to the edges of the messages, to allow space for the
           // user's image.
-          margin: const EdgeInsets.symmetric(horizontal: 46),
+          margin: const EdgeInsets.symmetric(horizontal: 5),
           child: Row(
             // The side of the chat screen the message should show at.
             mainAxisAlignment:
@@ -31,20 +29,6 @@ class ChatMessageBubble extends StatelessWidget {
                 crossAxisAlignment:
                     isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
                 children: [
-                  if (username != null)
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 13,
-                        right: 13,
-                      ),
-                      child: Text(
-                        username!,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                    ),
                   Container(
                     decoration: BoxDecoration(
                       color: isMe
