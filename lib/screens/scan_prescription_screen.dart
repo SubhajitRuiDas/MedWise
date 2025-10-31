@@ -55,6 +55,7 @@ class _ScanPrescriptionScreenState extends State<ScanPrescriptionScreen> {
       showSnackbar(context, "Please attach your prescription image");
       return;
     }
+    print(_pickedImage!.path);
 
     context.read<PrescriptionProcessBloc>().add(PrescriptionProcessClicked(imageFile: _pickedImage!));
 

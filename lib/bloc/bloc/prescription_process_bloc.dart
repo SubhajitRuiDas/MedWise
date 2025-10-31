@@ -29,9 +29,10 @@ class PrescriptionProcessBloc extends Bloc<PrescriptionProcessEvent, Prescriptio
         emit(PrescriptionProcessError(errorText: "No text found from the image or any issue occured"));
         return;
       }
-
+      print("Extracted Text: $extractedText");
       final prompt = "$extractedText this is written in my prescription which is prescribed by my doctor. Which medicines are written? Mention timings, disease if any, and give brief analysis.";
       final aiGeneratedResponse = await GeminiApiService.askGeminiAI(prompt);
+      print("Ai generated response: $aiGeneratedResponse");
 
       emit(PrescriptionProcessSuccessful(aiGeneratedResponse: aiGeneratedResponse));
     } catch(e){
