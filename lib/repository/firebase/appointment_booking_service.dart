@@ -3,11 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:med_tech_app/model/dr_model.dart';
 
 class AppointmentBookingService {
-  static final userId = FirebaseAuth.instance.currentUser!.uid;
-
   static Future<bool> bookDrAppointment(DrModel bookedDr, String appointmentDate) async{
-    
-
+    final userId = FirebaseAuth.instance.currentUser!.uid;
     final appointmentsCollection = FirebaseFirestore.instance.collection("appointments").doc(userId)
     .collection(userId);
 
@@ -34,6 +31,7 @@ class AppointmentBookingService {
   }
 
   static Stream<QuerySnapshot<Map<String, dynamic>>> bookedDrsSnapshotList() {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
     return FirebaseFirestore.instance.collection("appointments")
     .doc(userId).collection(userId).snapshots();
   }

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -122,7 +121,7 @@ class _ScanPrescriptionScreenState extends State<ScanPrescriptionScreen> {
           BlocBuilder<PrescriptionProcessBloc, PrescriptionProcessState>(
             builder: (context, state){
               if(state is PrescriptionProcessLoading){
-                return CircularProgressIndicator();
+                return Center(widthFactor: 20, heightFactor: 20, child: CircularProgressIndicator());
               } else if(state is PrescriptionProcessSuccessful){
                 return Container(
                   padding: EdgeInsets.all(20),

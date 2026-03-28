@@ -33,10 +33,10 @@ class _AuthScreenState extends State<AuthScreen> {
     final _firebaseAuthInstance = FirebaseAuth.instance;
 
     final authQubit = BlocProvider.of<UserAuthCubit>(context);
-    authQubit.startAuthenticationProcess();
 
     final _formValid = _formKey.currentState!.validate();
     if(!_formValid) return;
+    authQubit.startAuthenticationProcess();
 
     _formKey.currentState!.save();  // save the current form state
     
@@ -280,7 +280,6 @@ class _AuthScreenState extends State<AuthScreen> {
   void googleSignInMethod() async{
     final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
     final GoogleSignIn _googleSignIn = GoogleSignIn();
-
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
@@ -289,8 +288,7 @@ class _AuthScreenState extends State<AuthScreen> {
         showSnackbar(context, "Google sign-in cancelled");
         return;
       }
-      final GoogleSignInAuthentication? googleAuth =
-        await googleUser.authentication;
+      final GoogleSignInAuthentication? googleAuth = await googleUser.authentication;
         
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,

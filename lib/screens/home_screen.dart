@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:med_tech_app/model/dr_model.dart';
 import 'package:med_tech_app/screens/chat_with_model_screen.dart';
@@ -19,7 +17,6 @@ class HomeScreen extends StatefulWidget{
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedScreen = 0;
   String username ="";
@@ -179,14 +176,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.lightBlue.shade50,
       appBar: AppBar(
         title: Text(
           "Hello!\n$username",
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: homeScreenBg,
-        elevation: 2,
+        backgroundColor: Colors.lightBlue.shade50,
+        elevation: 10,
       ),
       drawer: MainSideDrawer(),
       body: _selectCurrentScreenBasedOnBottomNavbar(),
