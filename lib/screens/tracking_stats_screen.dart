@@ -64,7 +64,7 @@ class _TrackingStatsScreenState extends State<TrackingStatsScreen> {
         title: Text(attributeText,
             style: const TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue[300],
       ),
       backgroundColor: Colors.blue.shade50,
 
@@ -81,8 +81,9 @@ class _TrackingStatsScreenState extends State<TrackingStatsScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ChoiceChip(
-                  label: const Text("Week"),
+                  label: const Text("Week", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
                   selected: _selectedView == "Week",
+                  selectedColor: Colors.blue[300],
                   onSelected: (_) {
                     setState(() {
                       _selectedView = "Week";
@@ -91,8 +92,9 @@ class _TrackingStatsScreenState extends State<TrackingStatsScreen> {
                 ),
                 const SizedBox(width: 10),
                 ChoiceChip(
-                  label: const Text("Month"),
+                  label: const Text("Month", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
                   selected: _selectedView == "Month",
+                  selectedColor: Colors.blue[300],
                   onSelected: (_) {
                     setState(() {
                       _selectedView = "Month";
@@ -125,13 +127,12 @@ class _TrackingStatsScreenState extends State<TrackingStatsScreen> {
                       fillColor: Colors.white,
                     ),
                   ),
-
                   const SizedBox(height: 15),
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.blue[300],
                         padding: const EdgeInsets.symmetric(vertical: 14),
                       ),
                       onPressed: () async {
@@ -154,7 +155,7 @@ class _TrackingStatsScreenState extends State<TrackingStatsScreen> {
                         inputController.clear();
                         await loadWeeklyStats();
                       },
-                      child: const Text("Save Entry"),
+                      child: const Text("Save Entry", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
                     ),
                   ),
                   const SizedBox(height: 25),
@@ -174,15 +175,22 @@ class _TrackingStatsScreenState extends State<TrackingStatsScreen> {
 
                   const SizedBox(height: 10),
                   Container(
-                    height: 300,
+                    height: 350,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black54,
+                          blurRadius: 10,
+                          spreadRadius: 2,
+                        ),
+                      ],
                     ),
                     child: weeklyData.isEmpty
                         ? const Center(child: CircularProgressIndicator())
-                        : WeeklyBarChartWidget(weeklyData: weeklyData),
+                        : WeeklyBarChartWidget(weeklyData: weeklyData, attributeIdentity: widget.attributeIdentity),
                   ),
                 ],
               ),

@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/doctor-with-his-arms-crossed-white-background.png"),
+                        backgroundImage: AssetImage(doctor["doctorImage"]),
                       ),
                       title: Text(doctor["doctorName"]),
                       subtitle: Text("${doctor["doctorSpecialization"]}\n⭐${doctor["doctorRatings"]}"),

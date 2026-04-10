@@ -35,7 +35,7 @@ class _DrAppointmentBookingScreenState extends State<DrAppointmentBookingScreen>
               decoration: BoxDecoration(
                 color: buttonColor2,
                 borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-                image: DecorationImage(image: AssetImage("assets/images/doctor-with-his-arms-crossed-white-background.png"),
+                image: DecorationImage(image: AssetImage(widget.currDr.doctorImage),
                 fit: BoxFit.contain),
               ),
             ),

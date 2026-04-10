@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 Future<String> askRagModel(String userMessageText) async{
-  final url = Uri.parse("http://34.100.167.230:8000/rag/med/retrieve");  // ata demo url raklam
+  final url = Uri.parse("http://34.93.126.52:8000/rag/med/retrieve");  // ata demo url raklam
 
   final response = await http.post(
     url,

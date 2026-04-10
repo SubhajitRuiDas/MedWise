@@ -2,28 +2,28 @@ final List<String> doctors_specialization_category = ["All", "Cardiologist", "De
 final List<Map<String, dynamic>> doctors_list_data = [
   // Cardiologists
   {
-    "doctorImage": "https://example.com/images/dr_smith.jpg",
+    "doctorImage": "assets/images/doctor-with-his-arms-crossed-white-background.png",
     "doctorRatings": 4.8,
     "doctorName": "Dr. John Smith",
     "doctorSpecialization": "Cardiologist",
     "doctorFees": 1200,
   },
   {
-    "doctorImage": "https://example.com/images/dr_fernandez.jpg",
+    "doctorImage": "assets/images/doctor.png",
     "doctorRatings": 4.7,
     "doctorName": "Dr. Carlos Fernandez",
     "doctorSpecialization": "Cardiologist",
     "doctorFees": 1300,
   },
   {
-    "doctorImage": "https://example.com/images/dr_rao.jpg",
+    "doctorImage": "assets/images/doctor (1).png",
     "doctorRatings": 4.5,
     "doctorName": "Dr. Ravi Rao",
     "doctorSpecialization": "Cardiologist",
     "doctorFees": 1250,
   },
   {
-    "doctorImage": "https://example.com/images/dr_jackson.jpg",
+    "doctorImage": "assets/images/doctor (3).png",
     "doctorRatings": 4.6,
     "doctorName": "Dr. Linda Jackson",
     "doctorSpecialization": "Cardiologist",
@@ -32,28 +32,28 @@ final List<Map<String, dynamic>> doctors_list_data = [
 
   // Dermatologists
   {
-    "doctorImage": "https://example.com/images/dr_patel.jpg",
+    "doctorImage": "assets/images/doctor (3).png",
     "doctorRatings": 4.5,
     "doctorName": "Dr. Anjali Patel",
     "doctorSpecialization": "Dermatologist",
     "doctorFees": 800,
   },
   {
-    "doctorImage": "https://example.com/images/dr_sharma.jpg",
+    "doctorImage": "assets/images/nutritionist.png",
     "doctorRatings": 4.4,
     "doctorName": "Dr. Neha Sharma",
     "doctorSpecialization": "Dermatologist",
     "doctorFees": 1000,
   },
   {
-    "doctorImage": "https://example.com/images/dr_bose.jpg",
+    "doctorImage": "assets/images/nutritionist.png",
     "doctorRatings": 4.5,
     "doctorName": "Dr. Sneha Bose",
     "doctorSpecialization": "Dermatologist",
     "doctorFees": 1150,
   },
   {
-    "doctorImage": "https://example.com/images/dr_cooper.jpg",
+    "doctorImage": "assets/images/doctor (4).png",
     "doctorRatings": 4.6,
     "doctorName": "Dr. Alice Cooper",
     "doctorSpecialization": "Dermatologist",
@@ -62,28 +62,28 @@ final List<Map<String, dynamic>> doctors_list_data = [
 
   // Pediatricians
   {
-    "doctorImage": "https://example.com/images/dr_lee.jpg",
+    "doctorImage": "assets/images/doctor (2).png",
     "doctorRatings": 4.6,
     "doctorName": "Dr. Grace Lee",
     "doctorSpecialization": "Pediatrician",
     "doctorFees": 950,
   },
   {
-    "doctorImage": "https://example.com/images/dr_singh.jpg",
+    "doctorImage": "assets/images/doctor (4).png",
     "doctorRatings": 4.6,
     "doctorName": "Dr. Priya Singh",
     "doctorSpecialization": "Pediatrician",
     "doctorFees": 980,
   },
   {
-    "doctorImage": "https://example.com/images/dr_morris.jpg",
+    "doctorImage": "assets/images/doctor (1).png",
     "doctorRatings": 4.4,
     "doctorName": "Dr. Rebecca Morris",
     "doctorSpecialization": "Pediatrician",
     "doctorFees": 990,
   },
   {
-    "doctorImage": "https://example.com/images/dr_kapoor.jpg",
+    "doctorImage": "assets/images/doctor (2).png",
     "doctorRatings": 4.7,
     "doctorName": "Dr. Rahul Kapoor",
     "doctorSpecialization": "Pediatrician",
@@ -92,28 +92,28 @@ final List<Map<String, dynamic>> doctors_list_data = [
 
   // Neurologists
   {
-    "doctorImage": "https://example.com/images/dr_khan.jpg",
+    "doctorImage": "assets/images/doctor (4).png",
     "doctorRatings": 4.9,
     "doctorName": "Dr. Aamir Khan",
     "doctorSpecialization": "Neurologist",
     "doctorFees": 1500,
   },
   {
-    "doctorImage": "https://example.com/images/dr_tanaka.jpg",
+    "doctorImage": "assets/images/nutritionist.png",
     "doctorRatings": 4.7,
     "doctorName": "Dr. Yuto Tanaka",
     "doctorSpecialization": "Neurologist",
     "doctorFees": 1350,
   },
   {
-    "doctorImage": "https://example.com/images/dr_omar.jpg",
+    "doctorImage": "assets/images/nutritionist.png",
     "doctorRatings": 4.7,
     "doctorName": "Dr. Omar Al-Mansoori",
     "doctorSpecialization": "Neurologist",
     "doctorFees": 1600,
   },
   {
-    "doctorImage": "https://example.com/images/dr_kim.jpg",
+    "doctorImage": "assets/images/doctor (3).png",
     "doctorRatings": 4.8,
     "doctorName": "Dr. Min-Jae Kim",
     "doctorSpecialization": "Neurologist",
@@ -122,28 +122,28 @@ final List<Map<String, dynamic>> doctors_list_data = [
 
   // General Physicians
   {
-    "doctorImage": "https://example.com/images/dr_wilson.jpg",
+    "doctorImage": "assets/images/doctor (1).png",
     "doctorRatings": 4.6,
     "doctorName": "Dr. Emily Wilson",
     "doctorSpecialization": "General Physician",
     "doctorFees": 600,
   },
   {
-    "doctorImage": "https://example.com/images/dr_clark.jpg",
+    "doctorImage": "assets/images/doctor (2).png",
     "doctorRatings": 4.3,
     "doctorName": "Dr. Susan Clark",
     "doctorSpecialization": "General Physician",
     "doctorFees": 880,
   },
   {
-    "doctorImage": "https://example.com/images/dr_brown.jpg",
+    "doctorImage": "assets/images/doctor (4).png",
     "doctorRatings": 4.2,
     "doctorName": "Dr. Michael Brown",
     "doctorSpecialization": "General Physician",
     "doctorFees": 700,
   },
   {
-    "doctorImage": "https://example.com/images/dr_evans.jpg",
+    "doctorImage": "assets/images/doctor.png",
     "doctorRatings": 4.4,
     "doctorName": "Dr. Thomas Evans",
     "doctorSpecialization": "General Physician",

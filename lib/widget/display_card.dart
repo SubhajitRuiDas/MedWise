@@ -54,7 +54,7 @@ class DisplayCard extends StatelessWidget {
           Expanded(
             flex: 1,
             child: Image.asset(
-              "assets/images/doctor-with-his-arms-crossed-white-background.png",
+              "assets/images/medical-team.png",
               fit: BoxFit.contain,
             ),
           ),

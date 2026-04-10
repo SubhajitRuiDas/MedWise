@@ -42,26 +42,29 @@ class _ChatWithModelScreenState extends State<ChatWithModelScreen> {
         children: [
           Expanded(
             child: _messages.isEmpty ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset("assets/images/artificial-intelligence.png", height: 200, width: 200,),
-                  const SizedBox(height: 20,),
-                  const Text(
-                    "Ask your query to MedWise AI 🤖",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.blueGrey
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset("assets/images/artificial-intelligence.png", height: 200, width: 200,),
+                    const SizedBox(height: 20,),
+                    const Text(
+                      "Ask your query to MedWise AI 🤖",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: Colors.blueGrey
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10,),
-                  const Text("Get instant medical insights from AI", textAlign: TextAlign.center, style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),),
-                  const SizedBox(height: 20,),
-                  ChatbotScreenSuggestionWidgets(suggestionText: "💊 Ask about a health issue"),
-                  ChatbotScreenSuggestionWidgets(suggestionText: "🤒 Check disease symptoms"),
-                  ChatbotScreenSuggestionWidgets(suggestionText: "🥗 Get diet recommendations"),
-                ],
+                    const SizedBox(height: 10,),
+                    const Text("Get instant medical insights from AI", textAlign: TextAlign.center, 
+                    style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold),),
+                    const SizedBox(height: 20,),
+                    ChatbotScreenSuggestionWidgets(suggestionText: "💊 Ask about a health issue"),
+                    ChatbotScreenSuggestionWidgets(suggestionText: "🤒 Check disease symptoms"),
+                    ChatbotScreenSuggestionWidgets(suggestionText: "🥗 Get diet recommendations"),
+                  ],
+                ),
               ),
             )
             : ListView.builder(

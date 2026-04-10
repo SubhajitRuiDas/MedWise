@@ -11,9 +11,9 @@ class ChatbotScreenSuggestionWidgets extends StatelessWidget{
       padding: EdgeInsets.all(6),
       width: 200,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade300),
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: Colors.white, width: 2.0),
       ),
       child: Text(
         suggestionText,
